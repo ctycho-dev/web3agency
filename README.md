@@ -1,46 +1,59 @@
-# Getting Started with Create React App
+=== Node23 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+```
+docker build . -t
+```
 
-## Available Scripts
 
-In the project directory, you can run:
+* Issue cert
+```
+sudo certbot --nginx -d node23.ru -d www.node23.ru
+sudo nginx -t
+sudo systemctl reload nginx
 
-### `npm start`
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+* Nginx config
+```
+# Redirect HTTP to HTTPS and enforce www
+server {
+    listen 80;
+    server_name node23.ru www.node23.ru;
 
-### `npm test`
+    # Redirect all requests to https://www.node23.ru
+    return 301 https://www.node23.ru$request_uri;
+}
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+server {
+    listen 443 ssl;
+    server_name node23.ru;
 
-### `npm run build`
+    # Redirect non-www HTTPS to www HTTPS
+    return 301 https://www.node23.ru$request_uri;
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+    ssl_certificate /etc/letsencrypt/live/node23.ru/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/node23.ru/privkey.pem; # managed by Certbot
+}
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+server {
+    listen 443 ssl;
+    server_name www.node23.ru;
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+    ssl_certificate /etc/letsencrypt/live/node23.ru/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/node23.ru/privkey.pem; # managed by Certbot
 
-### `npm run eject`
+    ssl_protocols TLSv1.2 TLSv1.3;
+    ssl_ciphers 'TLS_AES_128_GCM_SHA256:TLS_AES_256_GCM_SHA384:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384';
+    ssl_prefer_server_ciphers off;
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+    location / {
+        proxy_pass http://0.0.0.0:5125;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
