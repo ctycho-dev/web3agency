@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useEffect } from "react";
 
 import Header from "../components/header";
 import MainSection from "../components/mainSection/mainSection";
@@ -13,6 +13,10 @@ import Footer from "../components/footer";
 
 
 const Home: FC = () => {
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
 
     return (
         <>

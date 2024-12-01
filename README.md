@@ -5,6 +5,15 @@ docker build . -t
 ```
 
 
+* Create Nginx config
+```
+
+sudo chmod 644 /etc/nginx/sites-available/node23.conf
+
+sudo ln -s /etc/nginx/sites-available/node23 /etc/nginx/sites-enabled/
+
+```
+
 * Issue cert
 ```
 sudo certbot --nginx -d node23.ru -d www.node23.ru
@@ -12,6 +21,17 @@ sudo nginx -t
 sudo systemctl reload nginx
 
 ```
+
+* Check cert dates
+```
+sudo certbot certificates
+```
+
+* Check cert dates
+```
+sudo certbot renew
+```
+
 
 
 * Nginx config

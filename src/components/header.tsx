@@ -1,4 +1,5 @@
 import { FC } from "react";
+import { useInView } from 'react-intersection-observer';
 
 import { AnimatedHamburgerButton } from "../components/burger";
 import { SiDiscord } from "react-icons/si";
@@ -10,10 +11,16 @@ interface IHeader { }
 
 const Header: FC<IHeader> = ({ }) => {
 
+    const { ref, inView } = useInView({
+        triggerOnce: true, // Trigger the animation only once
+        threshold: 0, // Trigger when 20% of the element is in view
+    });
+
     return (
         <>
             {/* <header className="relative h-[100px] z-20"> */}
-            <header className="sticky top-0 bg-gradient-to-b from-zinc-950 to-zinc-950 z-20 text-transparent border-b border-zinc-800">
+            <header ref={ref} className={`sticky top-0 bg-gradient-to-b from-zinc-950 to-zinc-950 z-20 text-transparent border-b border-zinc-800
+                transition-all duration-[2s] ease-in-out ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-[80px]'}`}>
                 <div className="flex items-center justify-between px-4 md:px-8 h-[80px]">
                     <div className="flex items-center gap-x-6">
                         <div className="text-3xl" style={{

@@ -1,8 +1,14 @@
 import { FC } from "react";
+import { useInView } from 'react-intersection-observer';
 
 interface IMainSection { }
 
 const MainSection: FC<IMainSection> = ({ }) => {
+
+    const { ref, inView } = useInView({
+        triggerOnce: true, // Trigger the animation only once
+        threshold: 0.2, // Trigger when 20% of the element is in view
+    });
 
     return (
         <>
@@ -13,7 +19,9 @@ const MainSection: FC<IMainSection> = ({ }) => {
                 pb-12 pt-24 md:pb-36 md:pt-36
                 `}>
                 <h1
-                    className="font-bold text-transparent leading-none text-center mb-8"
+                    ref={ref}
+                    className={`font-bold text-transparent leading-none text-center mb-8 transition-all duration-[2s] ease-in-out
+                        ${inView ? 'opacity-100' : 'opacity-0 translate-y-8'}`}
                     style={{
                         WebkitBackgroundClip: "text", // Clips the background to the text for some browsers
                         backgroundImage: "linear-gradient(45deg, #4e97ff, #3f7ad7, #1e58b8)", // Gradient background (optional)
@@ -23,12 +31,15 @@ const MainSection: FC<IMainSection> = ({ }) => {
                     <span className="text-white text-5xl md:text-6xl lg:text-7xl xl:text-8xl">Marketing </span>
                     <span className="text-white text-5xl md:text-6xl lg:text-7xl xl:text-8xl mb-2">Agency</span>
                 </h1>
-                <p className="mb-9 max-w-2xl text-base text-zinc-400 sm:text-lg md:text-xl">
+                <p ref={ref} className={`mb-9 max-w-2xl text-base text-zinc-400 sm:text-lg md:text-xl transition-all duration-[2s] delay-300 ease-in-out
+                        ${inView ? 'opacity-100' : 'opacity-0 translate-y-8'}`}>
                     Build beautiful landing pages for your startups, clients, and side projects, without having to think about design.
                 </p>
                 <div
-                    className="flex flex-col items-center gap-4 sm:flex-row"
-                    style={{ opacity: 1, transform: 'none' }}
+                    ref={ref}
+                    className={`flex flex-col items-center gap-4 sm:flex-row transition-all duration-[2s] delay-500 ease-in-out
+                        ${inView ? 'opacity-100' : 'opacity-0 translate-y-8'}`}
+                    // style={{ opacity: 1, transform: 'none' }}
                 >
                     {/* Try it free button */}
                     <button className="rounded-md bg-gradient-to-br from-blue-400 to-blue-700 px-4 py-2 text-lg text-zinc-50 ring-2 ring-blue-500/50 ring-offset-2 ring-offset-zinc-950 transition-all hover:scale-[1.02] hover:ring-transparent active:scale-[0.98] active:ring-blue-500/70 flex items-center gap-2">

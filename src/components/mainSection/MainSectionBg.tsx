@@ -1,10 +1,17 @@
 import { FC } from "react";
 import { motion } from "framer-motion";
+import { useInView } from 'react-intersection-observer';
 
 
 interface IMainSectionBg { }
 
 const MainSectionBg: FC<IMainSectionBg> = ({ }) => {
+
+    const { ref, inView } = useInView({
+        triggerOnce: true, // Trigger the animation only once
+        threshold: 0.2, // Trigger when 20% of the element is in view
+    });
+
     // Animation variants for smooth appearance and motion
     const animationVariants = {
         initial: { opacity: 0, y: -100 }, // Start above and invisible
@@ -77,7 +84,10 @@ const MainSectionBg: FC<IMainSectionBg> = ({ }) => {
                 />
             </div>
 
-            <div className="absolute inset-0 z-0" style={{ opacity: 1 }}>
+            <div ref={ref}
+                className={`absolute inset-0 z-0 transition-opacity duration-[2.5s] ease-in-out
+                ${inView ? 'opacity-100' : 'opacity-0'}`}
+            >
                 <div
                     className="absolute inset-0 z-0"
                     style={{
