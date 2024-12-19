@@ -18,7 +18,7 @@ const GetInTouch: FC = () => {
 
     return (
 
-        <section id='get_in_touch' className="relative overflow-hidden text-white mb-24">
+        <section id='get_in_touch' className="relative overflow-hidden text-white pt-24">
             <div className="relative z-10 overflow-hidden">
                 <div className="mx-auto max-w-7xl px-4 md:px-8">
                     <h2 className="text-center text-3xl font-semibold leading-tight sm:text-4xl sm:leading-tight md:text-5xl md:leading-tight md:text-start mb-6">

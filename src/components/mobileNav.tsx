@@ -1,15 +1,9 @@
-import { FC, useState, useRef } from "react";
-import { Link } from "react-router-dom";
-import {
-    FiHome,
-    FiFile,
-    FiFolder,
-    FiHelpCircle
-} from "react-icons/fi";
+import { FC } from "react";
+
 import { BsTwitterX } from "react-icons/bs";
 import { BiLogoTelegram } from "react-icons/bi";
-import { MdOutlineSupportAgent } from "react-icons/md";
 import plus from '../assets/plus.svg'
+import { scrollToSection } from "../utils";
 
 
 interface IMobileNav {
@@ -19,19 +13,9 @@ interface IMobileNav {
 
 const MobileNav: FC<IMobileNav> = ({ isMobileMenuOpen, setMobileMenuOpen }) => {
 
-    const scrollToSection = (section: string) => {
+    const handleClick = (section: string) => {
         setMobileMenuOpen(false)
-        const faqSection = document.getElementById(section);
-        if (faqSection) {
-            const offset = 100; // Offset in pixels
-            const elementPosition = faqSection.getBoundingClientRect().top + window.pageYOffset;
-            const offsetPosition = elementPosition - offset;
-
-            window.scrollTo({
-                top: offsetPosition,
-                behavior: 'smooth'
-            });
-        }
+        scrollToSection(section)
     };
 
 
@@ -59,22 +43,22 @@ const MobileNav: FC<IMobileNav> = ({ isMobileMenuOpen, setMobileMenuOpen }) => {
                         <div className="mb-20">
                             <ul className="grid gap-y-5 font-semibold text-xl mb-10">
                                 <li >
-                                    <div onClick={() => { scrollToSection('services') }} className="hover:text-green-primary hover:cursor-pointer flex gap-x-2 items-center">
+                                    <div onClick={() => { handleClick('services') }} className="hover:text-green-primary hover:cursor-pointer flex gap-x-2 items-center">
                                         <span className="text-sm">Services</span>
                                     </div>
                                 </li>
                                 <li >
-                                    <div onClick={() => { scrollToSection('features') }} className="hover:text-green-primary hover:cursor-pointer flex gap-x-2 items-center">
+                                    <div onClick={() => { handleClick('features') }} className="hover:text-green-primary hover:cursor-pointer flex gap-x-2 items-center">
                                         <span className="text-sm">Advantages</span>
                                     </div>
                                 </li>
                                 <li >
-                                    <div onClick={() => { scrollToSection('faq') }} className="hover:text-green-primary hover:cursor-pointer flex gap-x-2 items-center">
+                                    <div onClick={() => { handleClick('faq') }} className="hover:text-green-primary hover:cursor-pointer flex gap-x-2 items-center">
                                         <span className="text-sm">FAQ</span>
                                     </div>
                                 </li>
                                 <li >
-                                    <div onClick={() => { scrollToSection('get_in_touch') }} className="hover:text-green-primary hover:cursor-pointer flex gap-x-2 items-center">
+                                    <div onClick={() => { handleClick('get_in_touch') }} className="hover:text-green-primary hover:cursor-pointer flex gap-x-2 items-center">
                                         <span className="text-sm">Get in Touch</span>
                                     </div>
                                 </li>

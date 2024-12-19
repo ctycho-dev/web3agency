@@ -84,7 +84,7 @@ const FeaturesSection: FC = () => {
 
     return (
 
-        <section id='features' className="relative overflow-hidden text-white border-b border-zinc-700 bg-zinc-900/30 py-16 mb-24">
+        <section id='features' className="relative overflow-hidden text-white border-b border-zinc-700 bg-zinc-900/30 py-16 pt-24">
             <div className="relative z-10 overflow-hidden">
                 <div className="mx-auto max-w-7xl px-4 md:px-8">
                     <div className="mb-12 flex flex-col items-center justify-between gap-6 md:flex-row md:items-end">
