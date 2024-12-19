@@ -10,6 +10,7 @@ import ReviewSection from "../components/reviewSction/reviewSection";
 import StatsSection from "../components/statsSection";
 import FAQsSection from "../components/faqSection/faq";
 import Footer from "../components/footer";
+import GetInTouch from "../components/getInTouch";
 
 
 const Home: FC = () => {
@@ -24,16 +25,17 @@ const Home: FC = () => {
 
             <MainSection />
             <MainSectionBg />
-            <TrustedBy />
+            {/* <TrustedBy /> */}
 
             <ServicesSection />
 
             <FeaturesSection />
-            <ReviewSection />
+            {/* <ReviewSection /> */}
 
-            <StatsSection />
+            {/* <StatsSection /> */}
 
             <FAQsSection />
+            <GetInTouch />
 
             <Footer />
         </>

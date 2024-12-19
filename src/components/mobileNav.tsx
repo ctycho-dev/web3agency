@@ -1,14 +1,26 @@
-import { FC } from "react";
-
-import { SiDiscord } from "react-icons/si";
-import { BsTwitterX, BsMedium } from "react-icons/bs";
+import { FC, useState, useRef } from "react";
+import { Link } from "react-router-dom";
+import {
+    FiHome,
+    FiFile,
+    FiFolder,
+    FiHelpCircle
+} from "react-icons/fi";
+import { BsTwitterX } from "react-icons/bs";
 import { BiLogoTelegram } from "react-icons/bi";
+import { MdOutlineSupportAgent } from "react-icons/md";
+import plus from '../assets/plus.svg'
 
-interface IFooter { }
 
-const Footer: FC<IFooter> = ({ }) => {
+interface IMobileNav {
+    isMobileMenuOpen: boolean
+    setMobileMenuOpen: any
+}
+
+const MobileNav: FC<IMobileNav> = ({ isMobileMenuOpen, setMobileMenuOpen }) => {
 
     const scrollToSection = (section: string) => {
+        setMobileMenuOpen(false)
         const faqSection = document.getElementById(section);
         if (faqSection) {
             const offset = 100; // Offset in pixels
@@ -22,26 +34,30 @@ const Footer: FC<IFooter> = ({ }) => {
         }
     };
 
+
     return (
         <>
-            <footer className="bg-gradient-to-b from-zinc-950 to-zinc-950 z-20 text-transparent border-t border-zinc-800 py-14 sm:py-20">
-                <div className="max-w-7xl m-auto sm:flex items-center justify-between px-6 md:px-10 h-[80px]">
-                    <div className="mb-12 sm:mb-0">
-                        <div className="text-white text-sm">Managed by</div>
-                        <div className="text-3xl font-bold mb-4" style={{
-                            WebkitBackgroundClip: "text", // Clips the background to the text for some browsers
-                            backgroundImage: "linear-gradient(45deg, #4e97ff, #3f7ad7, #1e58b8)", // Gradient background (optional)
-                        }}>AthenaX Foundation</div>
-                        <div className="flex gap-x-4 mb-4">
-                            {/* <BsMedium className=" text-blue-500 text-2xl" /> */}
-                            <BiLogoTelegram className=" text-blue-500 text-2xl" />
-                            {/* <SiDiscord className=" text-blue-500 text-2xl" /> */}
-                            <BsTwitterX className="text-blue-500 text-2xl" />
+            <div id="overlay" className={`
+                        bg-[#0006] fixed left-0 right-0 top-0 bottom-0
+                        transition-opacity duration-800
+                        ${isMobileMenuOpen ? 'opacity-100' : 'opacity-0 invisible'}
+                        `}>
+            </div>
+            <div id="mobile-nav" className={`z-50
+                        border border-zinc-700 bg-gradient-to-br from-zinc-950 to-zinc-900 fixed left-4 right-4 top-4 bottom-4 
+                        rounded-lg p-6 min-w-80 min-h-80
+                        transition-transform duration-500
+                        ${isMobileMenuOpen ? '' : 'translate-y-0 translate-x-[-110%]'}`}>
+                <div className="relative flex flex-col justify-between h-full">
+                    <div>
+                        <div className="flex justify-between items-center mb-8">
+                            <div className="font-bold text-xl">Меню</div>
+                            <div className="bg-white flex md:hidden shadow-custom rounded-full justify-center items-center w-10 h-10 hover:cursor-pointer"
+                                onClick={() => { setMobileMenuOpen(false) }}><img src={plus} alt="" className="w-4 rotate-45" />
+                            </div>
                         </div>
-                        <div className="text-xs text-[#848895]">© 2024 WEB# Foundation. All rights reserved.</div>
-                    </div>
-                    <div className="flex gap-x-8 text-slate-400 pb-12 sm:pb-0">
-                    <ul className="grid gap-y-5 font-semibold text-xl">
+                        <div className="mb-20">
+                            <ul className="grid gap-y-5 font-semibold text-xl mb-10">
                                 <li >
                                     <div onClick={() => { scrollToSection('services') }} className="hover:text-green-primary hover:cursor-pointer flex gap-x-2 items-center">
                                         <span className="text-sm">Services</span>
@@ -69,11 +85,16 @@ const Footer: FC<IFooter> = ({ }) => {
                                     <a href="mailto:info@leeblock.ru" className="text-sm">info@leeblock.ru</a>
                                 </li> */}
                             </ul>
+                            <div className="flex gap-x-4">
+                                <BiLogoTelegram className=" text-blue-500 text-2xl" />
+                                <BsTwitterX className="text-blue-500 text-2xl" />
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </footer>
+            </div >
         </>
     )
 }
 
-export default Footer
+export default MobileNav

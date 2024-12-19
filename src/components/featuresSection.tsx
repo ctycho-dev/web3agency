@@ -84,16 +84,16 @@ const FeaturesSection: FC = () => {
 
     return (
 
-        <section className="relative overflow-hidden text-white border-b border-zinc-700 bg-zinc-900/30 py-16 mb-24">
+        <section id='features' className="relative overflow-hidden text-white border-b border-zinc-700 bg-zinc-900/30 py-16 mb-24">
             <div className="relative z-10 overflow-hidden">
                 <div className="mx-auto max-w-7xl px-4 md:px-8">
                     <div className="mb-12 flex flex-col items-center justify-between gap-6 md:flex-row md:items-end">
                         <div className="space-y-3">
                             <h2 className="text-center text-3xl font-semibold leading-tight sm:text-4xl sm:leading-tight md:text-5xl md:leading-tight md:text-start">
-                                Dive into the specifics
+                                Why AthenaX?
                             </h2>
                             <p className="text-center text-base text-zinc-400 md:text-lg mx-auto max-w-md md:mx-0 md:text-start">
-                                Anything else you want to show off? What are you proud of? What makes you different? Show it off here!
+                                We combine crypto expertise, creative design, and data-driven strategies to elevate your Web3 project. With secure solutions and strong partnerships, we drive your success in the decentralized world.
                             </p>
                         </div>
                         <div className="hidden md:flex items-center gap-2">
@@ -112,9 +112,9 @@ const FeaturesSection: FC = () => {
                         >
                             {[
                                 {
-                                    title: 'Fast & accurate reporting',
+                                    title: 'Crypto-Native Expertise',
                                     description:
-                                        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi, dolor.',
+                                        'A team deeply rooted in Web3, delivering secure and tailored strategies for blockchain ecosystems.',
                                     icon: (
                                         <svg
                                             stroke="currentColor"
@@ -134,9 +134,9 @@ const FeaturesSection: FC = () => {
                                     ),
                                 },
                                 {
-                                    title: 'A+ Security',
+                                    title: 'Comprehensive Marketing',
                                     description:
-                                        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi, dolor.',
+                                        'From PR to community building, we provide end-to-end support for Web3 growth.',
                                     icon: (
                                         <svg
                                             stroke="currentColor"
@@ -155,9 +155,9 @@ const FeaturesSection: FC = () => {
                                     ),
                                 },
                                 {
-                                    title: 'World class teams',
+                                    title: 'Data-Driven Decisions',
                                     description:
-                                        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi, dolor.',
+                                        'On- and off-chain analytics ensure measurable, performance-focused outcomes.',
                                     icon: (
                                         <svg
                                             stroke="currentColor"
@@ -179,9 +179,9 @@ const FeaturesSection: FC = () => {
                                     ),
                                 },
                                 {
-                                    title: 'Best in class support',
+                                    title: 'Creative Excellence',
                                     description:
-                                        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi, dolor.',
+                                        'Stunning design and impactful content that captivate, convert, and build trust.',
                                     icon: (
                                         <svg
                                             stroke="currentColor"
@@ -200,9 +200,9 @@ const FeaturesSection: FC = () => {
                                     ),
                                 },
                                 {
-                                    title: 'All-in-one product',
+                                    title: 'Strategic Partnerships',
                                     description:
-                                        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi, dolor.',
+                                        'Leveraging networks to foster meaningful collaborations while ensuring reliability and security.',
                                     icon: (
                                         <svg
                                             stroke="currentColor"
