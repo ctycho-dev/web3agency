@@ -19,17 +19,16 @@ sudo ln -s /etc/nginx/sites-available/node23 /etc/nginx/sites-enabled/
 sudo certbot --nginx -d node23.ru -d www.node23.ru
 sudo nginx -t
 sudo systemctl reload nginx
+```
 
+* Auto renew certificates
+```
+sudo certbot renew --dry-run
 ```
 
 * Check cert dates
 ```
 sudo certbot certificates
-```
-
-* Check cert dates
-```
-sudo certbot renew
 ```
 
 

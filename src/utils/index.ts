@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router-dom";
 
 export const scrollToSection = (section: string, offset: number = 0) => {
     const faqSection = document.getElementById(section);

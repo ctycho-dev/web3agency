@@ -29,34 +29,34 @@ const Footer: FC<IFooter> = ({ }) => {
                         <div className="text-xs text-[#848895]">© 2024 WEB# Foundation. All rights reserved.</div>
                     </div>
                     <div className="flex gap-x-8 text-slate-400 pb-12 sm:pb-0">
-                    <ul className="grid gap-y-5 font-semibold text-xl">
-                                <li >
-                                    <div onClick={() => { handleClick('services', 20) }} className="hover:text-green-primary hover:cursor-pointer flex gap-x-2 items-center">
-                                        <span className="text-sm">Services</span>
-                                    </div>
-                                </li>
-                                <li >
-                                    <div onClick={() => { handleClick('features') }} className="hover:text-green-primary hover:cursor-pointer flex gap-x-2 items-center">
-                                        <span className="text-sm">Advantages</span>
-                                    </div>
-                                </li>
-                                <li >
-                                    <div onClick={() => { handleClick('faq') }} className="hover:text-green-primary hover:cursor-pointer flex gap-x-2 items-center">
-                                        <span className="text-sm">FAQ</span>
-                                    </div>
-                                </li>
-                                <li >
-                                    <div onClick={() => { handleClick('get_in_touch') }} className="hover:text-green-primary hover:cursor-pointer flex gap-x-2 items-center">
-                                        <span className="text-sm">Get in Touch</span>
-                                    </div>
-                                </li>
-                                {/* <li className="hover:text-green-primary hover:cursor-pointer flex gap-x-2 items-center">
+                        <ul className="grid gap-y-5 font-semibold text-xl">
+                            <li >
+                                <div onClick={() => { handleClick('services', 20) }} className="hover:text-green-primary hover:cursor-pointer flex gap-x-2 items-center">
+                                    <span className="text-sm">Services</span>
+                                </div>
+                            </li>
+                            <li >
+                                <div onClick={() => { handleClick('features') }} className="hover:text-green-primary hover:cursor-pointer flex gap-x-2 items-center">
+                                    <span className="text-sm">Advantages</span>
+                                </div>
+                            </li>
+                            <li >
+                                <div onClick={() => { handleClick('faq') }} className="hover:text-green-primary hover:cursor-pointer flex gap-x-2 items-center">
+                                    <span className="text-sm">FAQ</span>
+                                </div>
+                            </li>
+                            <li >
+                                <div onClick={() => { handleClick('get_in_touch') }} className="hover:text-green-primary hover:cursor-pointer flex gap-x-2 items-center">
+                                    <span className="text-sm">Get in Touch</span>
+                                </div>
+                            </li>
+                            {/* <li className="hover:text-green-primary hover:cursor-pointer flex gap-x-2 items-center">
                                     <a href="tel:+79956295889" className="text-sm">+7(995) 629-58-89</a>
                                 </li>
                                 <li className="hover:text-green-primary hover:cursor-pointer flex gap-x-2 items-center">
                                     <a href="mailto:info@leeblock.ru" className="text-sm">info@leeblock.ru</a>
                                 </li> */}
-                            </ul>
+                        </ul>
                     </div>
                 </div>
             </footer>
